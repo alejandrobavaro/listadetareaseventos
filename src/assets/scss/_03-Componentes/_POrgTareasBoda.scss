@@ -1,0 +1,507 @@
+/* Estilos base - Mobile First */
+.pantalla-tareasboda {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  
+  .contenedor-tareasboda {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .encabezado-boda {
+    text-align: center;
+    margin-bottom: 1rem;
+    
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      color: #333;
+    }
+  }
+  
+  .controles-filtrado {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    
+    .search-box {
+      position: relative;
+      
+      i {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+      
+      input {
+        width: 100%;
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      
+      .sugerencias {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        z-index: 10;
+        
+        div {
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          
+          &:hover {
+            background: #f8f9fa;
+          }
+        }
+      }
+    }
+    
+    .filtros {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      
+      .filtro-chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        
+        .chip {
+          padding: 0.5rem 1rem;
+          border: 1px solid #dee2e6;
+          background: white;
+          border-radius: 2rem;
+          font-size: 0.8rem;
+          cursor: pointer;
+          
+          &.active {
+            background: #364fc7;
+            color: white;
+            border-color: #364fc7;
+          }
+        }
+      }
+      
+      select {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+    }
+    
+    .agrupacion {
+      label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        
+        input {
+          margin: 0;
+        }
+      }
+    }
+  }
+  
+  .resumen-estadisticas {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    
+    .estadistica {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      .numero {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .etiqueta {
+        font-size: 0.8rem;
+        color: #666;
+      }
+      
+      .barra-progreso {
+        width: 100%;
+        height: 4px;
+        background-color: #e9ecef;
+        margin-top: 0.5rem;
+        border-radius: 2px;
+        
+        .progreso {
+          height: 100%;
+          background-color: #40c057;
+          border-radius: 2px;
+          transition: width 0.3s ease;
+        }
+      }
+    }
+  }
+  
+  .lista-tareas {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .categoria {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    
+    .encabezado-categoria {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background-color: #f1f3f5;
+      border-bottom: 1px solid #dee2e6;
+      
+      i {
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+        color: #495057;
+      }
+      
+      h3 {
+        margin: 0;
+        flex-grow: 1;
+        font-size: 1.1rem;
+        color: #495057;
+      }
+      
+      .contador-tareas {
+        font-size: 0.8rem;
+        color: #6c757d;
+      }
+    }
+  }
+  
+  .tareas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      padding: 0;
+    }
+  }
+  
+  .tarea {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+    position: relative;
+    
+    &.completada {
+      opacity: 0.7;
+      background-color: #f8f9fa;
+      
+      .nombre-tarea {
+        text-decoration: line-through;
+      }
+    }
+    
+    &.asignada-alejandro {
+      border-left: 3px solid #4dabf7;
+    }
+    
+    &.asignada-fabiola {
+      border-left: 3px solid #f783ac;
+    }
+    
+    &.asignada-both {
+      border-left: 3px solid #69db7c;
+    }
+    
+    &.completed-feedback {
+      animation: greenPulse 1s;
+    }
+    
+    &.uncompleted-feedback {
+      animation: yellowPulse 1s;
+    }
+    
+    .mango-arrastre {
+      margin-right: 0.5rem;
+      cursor: grab;
+      color: #adb5bd;
+      
+      &:active {
+        cursor: grabbing;
+      }
+    }
+    
+    input[type="checkbox"] {
+      margin-right: 0.75rem;
+    }
+    
+    label {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      
+      .nombre-tarea {
+        font-size: 0.95rem;
+        color: #343a40;
+      }
+      
+      .fecha-vencimiento {
+        font-size: 0.75rem;
+        color: #868e96;
+        
+        .urgente {
+          color: #fa5252;
+          font-weight: bold;
+          margin-left: 0.5rem;
+          animation: pulse 1.5s infinite;
+        }
+      }
+    }
+    
+    .asignacion-tarea {
+      margin-left: 0.5rem;
+      
+      select {
+        padding: 0.25rem 0.5rem;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
+  .tarea-arrastrando {
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .sin-resultados {
+    text-align: center;
+    padding: 3rem;
+    color: #868e96;
+    
+    i {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      color: #ced4da;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+      margin: 0 0 0.5rem;
+    }
+    
+    .btn-limpiar {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #f1f3f5;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      
+      &:hover {
+        background: #e9ecef;
+      }
+    }
+  }
+  
+  .loading-message,
+  .error-message {
+    text-align: center;
+    padding: 2rem;
+    
+    i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+  }
+  
+  .loading-message {
+    color: #495057;
+  }
+  
+  .error-message {
+    color: #fa5252;
+  }
+  
+  [data-tooltip] {
+    position: relative;
+    
+    &:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.agrupacion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+  
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"] {
+    margin: 0;
+  }
+}
+
+/* Ajuste para los filtros en dispositivos móviles */
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    
+    .agrupacion {
+      margin-left: auto;
+    }
+  }
+}
+
+/* Animaciones */
+@keyframes greenPulse {
+  0% { background-color: white; }
+  50% { background-color: #ebfbee; }
+  100% { background-color: white; }
+}
+
+@keyframes yellowPulse {
+  0% { background-color: white; }
+  50% { background-color: #fff3bf; }
+  100% { background-color: white; }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Media Queries para tablet (768px) */
+@media (min-width: 768px) {
+  .pantalla-tareasboda {
+    padding: 1.5rem;
+    
+    .controles-filtrado {
+      flex-direction: row;
+      
+      .search-box {
+        flex: 2;
+      }
+      
+      .filtros {
+        flex: 3;
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    
+    .resumen-estadisticas {
+      padding: 1.5rem;
+    }
+    
+    .lista-tareas {
+      gap: 2rem;
+    }
+    
+    .tarea {
+      padding: 1rem 1.5rem;
+      
+      .asignacion-tarea select {
+        padding: 0.5rem;
+      }
+    }
+    
+    .encabezado-categoria {
+      padding: 1.5rem !important;
+    }
+  }
+}
+
+/* Media Queries para escritorio (1024px) */
+@media (min-width: 1024px) {
+  .pantalla-tareasboda {
+    padding: 2rem;
+    
+    .encabezado-boda h1 {
+      font-size: 2rem;
+    }
+    
+    .controles-filtrado {
+      gap: 1.5rem;
+    }
+    
+    .resumen-estadisticas {
+      padding: 2rem;
+      
+      .estadistica {
+        .numero {
+          font-size: 2rem;
+        }
+        
+        .etiqueta {
+          font-size: 1rem;
+        }
+      }
+    }
+    
+    .contenedor-tareasboda {
+      gap: 2rem;
+    }
+    
+    .categoria {
+      border-radius: 12px;
+    }
+  }
+}
